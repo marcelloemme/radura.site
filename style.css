@@ -117,7 +117,8 @@ a:hover {
   }
 
  .right {
-  flex: 1;
+  font-size: clamp(0.9rem, 3.5vw, 1rem);
+	 flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -143,6 +144,9 @@ a:hover {
   left: 50vw;
   transform: none;
   margin-bottom: 1rem;
+	   max-width: calc(100vw - 2rem); /* lascia sempre 1rem di spazio ai lati */
+  word-wrap: break-word;         /* evita che le parole lunghe escano */
+  overflow-wrap: anywhere;       /* permette la rottura anche su URL e mail */
 }
 
   .bottom-text p {
