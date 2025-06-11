@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'FTAktual';
+  src: url('FTAktual-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+body, html {
+  /* ... */
+  font-family: 'FTAktual', sans-serif;
+}
