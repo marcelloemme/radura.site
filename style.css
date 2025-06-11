@@ -10,8 +10,8 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  font-size: 1.1rem;
-  line-height: 1.2;
+  font-size: 1rem;
+  line-height: 0.65;
   font-family: 'FTAktual', sans-serif;
 }
 
@@ -55,7 +55,7 @@ html, body {
 .top-text {
   text-align: right;
   padding-top: 1rem;
-  padding-right: 1rem;
+  padding-right: 0.5rem;
 }
 
 .top-text .line {
@@ -65,11 +65,25 @@ html, body {
 /* Testo in basso allineato con base dell'immagine */
 .bottom-text {
   position: absolute;
-  bottom: 20vh; /* 100% - 80% dell'immagine */
+  bottom: calc(100vh - 80vh); /* = 20vh */
   right: 1rem;
   text-align: right;
 }
 
+.bottom-text p {
+  margin: 0;
+  padding: 0;
+}
+
 * {
   box-sizing: border-box;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
