@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'FTAktual';
   src: url('FTAktual-Book.woff') format('woff');
@@ -11,7 +15,7 @@ html, body {
   height: 100%;
   width: 100%;
 
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-size: clamp(0.9rem, min(1.4vw, 1.8vh), 1.1rem);
   line-height: 1.2;
   font-family: 'FTAktual', sans-serif;
   font-weight: normal;
@@ -54,7 +58,6 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 
 /* Testo in alto a destra */
@@ -81,9 +84,7 @@ html, body {
   padding: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 a {
   color: black;
