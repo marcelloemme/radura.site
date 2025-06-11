@@ -5,9 +5,66 @@
   font-style: normal;
 }
 
-
-
-body, html {
-  /* ... */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 1.1rem;
+  line-height: 1.2;
   font-family: 'FTAktual', sans-serif;
+  background-color: white;
+}
+
+/* Container principale */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Sezione sinistra: immagine */
+.left {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.left img {
+  height: 80vh;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sezione destra: testo */
+.right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Testo in alto a destra */
+.top-text {
+  text-align: right;
+  padding-top: 1rem;
+  padding-right: 1rem;
+}
+
+.top-text .line {
+  margin: 0 0 0.5rem 0;
+}
+
+/* Testo in basso allineato con base dell'immagine */
+.bottom-text {
+  position: absolute;
+  bottom: 20vh; /* 100% - 80% dell'immagine */
+  right: 1rem;
+  text-align: right;
 }
