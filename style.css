@@ -35,13 +35,6 @@ html, body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  align-items: flex-start; /* garantisce che .right non si allunghi più di .left */
-}
-
-/* Sezioni sinistra e destra: stessa altezza dell’immagine */
-.left,
-.right {
-  height: clamp(50vh, 100vw * 0.6, 80vh);
 }
 
 /* Sezione sinistra: immagine */
@@ -53,7 +46,7 @@ html, body {
 }
 
 .left img {
-  height: 100%;
+  height: clamp(50vh, 100vw * 0.6, 80vh);
   width: auto;
   display: block;
   margin: 0;
@@ -64,10 +57,10 @@ html, body {
 /* Sezione destra: testo */
 .right {
   flex: 1;
+  position: relative; /* necessario per .bottom-text in mobile */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 
 /* Testo in alto a destra */
@@ -81,11 +74,14 @@ html, body {
   margin: 0 0 0.5rem 0;
 }
 
-/* Testo in basso allineato con immagine */
+/* Testo in basso allineato con base dell'immagine (versione desktop) */
 .bottom-text {
+  position: absolute;
+  bottom: calc(100vh - 80vh); /* mantiene il bordo dell’immagine */
+  right: 1rem;
   text-align: right;
-  padding-right: 1rem;
-  transform: translateY(0.25em); /* compensa le discendenti */
+
+  transform: translateY(0.27em); /* abbassa il blocco per compensare le “gambette” */
 }
 
 .bottom-text p {
@@ -102,24 +98,25 @@ a:hover {
   text-decoration: underline;
 }
 
-/* VERSIONE MOBILE — si attiva su dispositivi verticali o quadrati */
+
+/* VERSIONE MOBILE */
+
 @media (max-aspect-ratio: 1/1) {
   html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%; /* evita zoom automatico su iOS */
   }
 
   .container {
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* garantisce che l'intero viewport venga riempito */
   }
 
   .left {
     width: 100%;
     flex: none;
-    height: auto;
   }
 
   .left img {
@@ -130,7 +127,7 @@ a:hover {
   }
 
   .right {
-    font-size: clamp(0.85rem, 3.5vw, 1rem);
+    font-size: clamp(0.85rem, 3.5vw, 1rem); /* font fluido in mobile */
     line-height: 1.2;
     flex: 1;
     display: flex;
@@ -138,36 +135,42 @@ a:hover {
     justify-content: space-between;
     height: 100%;
     box-sizing: border-box;
-    position: relative;
+    position: relative; /* necessario per .bottom-text */
   }
 
-  /* Testi mobili allineati a metà schermo */
- .top-text,
-.bottom-text {
-  position: absolute;
-  left: 50%;                     /* parte dal centro dello schermo */
-  transform: translateX(-50%);   /* sposta il blocco indietro della metà della sua larghezza */
+.top-text {
+  position: absolute; /* stacca il testo in alto dal flusso normale */
+  top: 1rem;           /* distanza dall'immagine (come era prima) */
+  left: 50%;           /* posiziona l'inizio del blocco a metà schermo */
+  transform: translateX(0); /* non centrare, lascia l'inizio a sinistra */
+  
   text-align: left;
-  width: 45vw;                   /* usa la metà destra dello schermo con un po' di margine */
+  width: 45vw;               /* lascia metà schermo più un po' di margine */
   padding-right: 1rem;
   box-sizing: border-box;
   overflow-wrap: anywhere;
   word-wrap: break-word;
 }
 
-.top-text {
-  top: 1rem;
-}
+  .top-text .line {
+    margin: 0;
+  }
 
-.top-text .line {
-  margin: 0;
-}
+  .bottom-text {
+    position: absolute;
+    bottom: calc(1rem + env(safe-area-inset-bottom)); /* distanza dal fondo visibile */
+    left: 50%;                           /* parte da metà schermo */
+    transform: translateX(0);            /* non centrato, bordo sinistro corrisponde a 50% */
+    text-align: left;
+    width: 45vw;                         /* limita la larghezza alla metà destra */
+    padding-right: 1rem;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+  }
 
-.bottom-text {
-  bottom: calc(1rem + env(safe-area-inset-bottom));
-}
-
-.bottom-text p {
-  margin: 0;
-  padding: 0;
+  .bottom-text p {
+    margin: 0;
+    padding: 0;
+  }
 }
