@@ -15,7 +15,7 @@ html, body {
   height: 100%;
   width: 100%;
 
-  font-size: clamp(0.9rem, min(1.4vw, 1.8vh), 1.1rem); /* font fluido desktop */
+  font-size: clamp(0.9rem, min(1vw, 1.8vh), 1.1rem);
   line-height: 1.2;
   font-family: 'FTAktual', sans-serif;
   font-weight: normal;
@@ -35,6 +35,13 @@ html, body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  align-items: flex-start;
+}
+
+/* Sezioni sinistra e destra: stessa altezza dell’immagine */
+.left,
+.right {
+  height: clamp(50vh, 100vw * 0.6, 80vh);
 }
 
 /* Sezione sinistra: immagine */
@@ -46,7 +53,7 @@ html, body {
 }
 
 .left img {
-  height: clamp(50vh, 100vw * 0.6, 80vh);
+  height: 100%;
   width: auto;
   display: block;
   margin: 0;
@@ -57,10 +64,10 @@ html, body {
 /* Sezione destra: testo */
 .right {
   flex: 1;
-  position: relative; /* necessario per .bottom-text in mobile */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 /* Testo in alto a destra */
@@ -74,14 +81,11 @@ html, body {
   margin: 0 0 0.5rem 0;
 }
 
-/* Testo in basso allineato con base dell'immagine (versione desktop) */
+/* Testo in basso allineato con immagine */
 .bottom-text {
-  position: absolute;
-  bottom: calc(100vh - 80vh); /* mantiene il bordo dell’immagine */
-  right: 1rem;
   text-align: right;
-
-  transform: translateY(0.27em); /* abbassa il blocco per compensare le “gambette” */
+  padding-right: 1rem;
+  transform: translateY(0.25em);
 }
 
 .bottom-text p {
@@ -98,25 +102,24 @@ a:hover {
   text-decoration: underline;
 }
 
-
-/* VERSIONE MOBILE */
-
+/* VERSIONE MOBILE — attiva su schermi verticali o quadrati */
 @media (max-aspect-ratio: 1/1) {
   html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    -webkit-text-size-adjust: 100%; /* evita zoom automatico su iOS */
+    -webkit-text-size-adjust: 100%;
   }
 
   .container {
     flex-direction: column;
-    min-height: 100vh; /* garantisce che l'intero viewport venga riempito */
+    min-height: 100vh;
   }
 
   .left {
     width: 100%;
     flex: none;
+    height: auto;
   }
 
   .left img {
@@ -127,7 +130,7 @@ a:hover {
   }
 
   .right {
-    font-size: clamp(0.85rem, 3.5vw, 1rem); /* font fluido in mobile */
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
     line-height: 1.2;
     flex: 1;
     display: flex;
@@ -135,38 +138,31 @@ a:hover {
     justify-content: space-between;
     height: 100%;
     box-sizing: border-box;
-    position: relative; /* necessario per .bottom-text */
+    position: relative;
   }
 
-.top-text {
-  position: absolute; /* stacca il testo in alto dal flusso normale */
-  top: 1rem;           /* distanza dall'immagine (come era prima) */
-  left: 50%;           /* posiziona l'inizio del blocco a metà schermo */
-  transform: translateX(0); /* non centrare, lascia l'inizio a sinistra */
-  
+  /* TESTI MOBILI — partono da metà schermo verso destra */
+  .top-text,
+.bottom-text {
+  position: absolute;
+  left: 50vw;                  /* parte esattamente da metà schermo */
+  width: 50vw;                 /* occupa esattamente la metà destra */
   text-align: left;
-  width: 45vw;               /* lascia metà schermo più un po' di margine */
   padding-right: 1rem;
   box-sizing: border-box;
-  overflow-wrap: anywhere;
-  word-wrap: break-word;
+  overflow-wrap: break-word;   /* va a capo solo tra parole intere */
 }
+
+  .top-text {
+    top: 1rem;
+  }
 
   .top-text .line {
     margin: 0;
   }
 
   .bottom-text {
-    position: absolute;
-    bottom: calc(1rem + env(safe-area-inset-bottom)); /* distanza dal fondo visibile */
-    left: 50%;                           /* parte da metà schermo */
-    transform: translateX(0);            /* non centrato, bordo sinistro corrisponde a 50% */
-    text-align: left;
-    width: 45vw;                         /* limita la larghezza alla metà destra */
-    padding-right: 1rem;
-    box-sizing: border-box;
-    overflow-wrap: anywhere;
-    word-wrap: break-word;
+    bottom: calc(1rem + env(safe-area-inset-bottom));
   }
 
   .bottom-text p {
