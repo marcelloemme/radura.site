@@ -77,9 +77,11 @@ html, body {
 /* Testo in basso allineato con base dell'immagine (versione desktop) */
 .bottom-text {
   position: absolute;
-  bottom: calc(100vh - 80vh); /* = 20vh */
+  bottom: calc(100vh - 80vh); /* mantiene il bordo dell’immagine */
   right: 1rem;
   text-align: right;
+
+  transform: translateY(0.27em); /* abbassa il blocco per compensare le “gambette” */
 }
 
 .bottom-text p {
@@ -135,17 +137,19 @@ a:hover {
     position: relative; /* necessario per .bottom-text */
   }
 
-  .top-text {
-    position: relative;
-    text-align: left;
-    margin-left: 50vw;               /* posiziona il blocco al centro */
-    transform: translateX(-50%);     /* allinea il bordo sinistro alla metà */
-    margin-top: 1rem;
-    width: calc(100vw - 2rem);
-    max-width: 32rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
+.top-text {
+  position: absolute; /* stacca il testo in alto dal flusso normale */
+  top: 1rem;           /* distanza dall'immagine (come era prima) */
+  left: 50%;           /* posiziona l'inizio del blocco a metà schermo */
+  transform: translateX(0); /* non centrare, lascia l'inizio a sinistra */
+  
+  text-align: left;
+  width: 45vw;               /* lascia metà schermo più un po' di margine */
+  padding-right: 1rem;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+}
 
   .top-text .line {
     margin: 0;
