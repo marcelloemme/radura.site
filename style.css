@@ -14,16 +14,13 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-
   font-size: clamp(0.9rem, min(1vw, 1.8vh), 1.1rem);
   line-height: 1.2;
   font-family: 'FTAktual', sans-serif;
   font-weight: normal;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -136,14 +133,15 @@ a:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    min-height: 100dvh;
     box-sizing: border-box;
-    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom)) 50vw;
+    padding: 0 1rem;
   }
 
   .top-text {
     text-align: left;
-    box-sizing: border-box;
+    margin-top: 1rem;
+    width: 100%;
   }
 
   .top-text .line {
@@ -152,7 +150,9 @@ a:hover {
 
   .bottom-text {
     text-align: left;
-    box-sizing: border-box;
+    margin-top: auto;
+    margin-bottom: calc(1rem + env(safe-area-inset-bottom));
+    width: 100%;
   }
 
   .bottom-text p {
