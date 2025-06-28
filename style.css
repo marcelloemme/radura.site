@@ -111,7 +111,7 @@ a:hover {
 
   .container {
     flex-direction: column;
-    min-height: 100dvh; /* garantisce che copra il viewport su Safari */
+    min-height: 100dvh; /* aggiorna qui da 100vh a 100dvh */
   }
 
   .left {
@@ -128,18 +128,14 @@ a:hover {
   }
 
   .right {
-  font-size: clamp(0.75rem, 3vw, 0.95rem);
-  line-height: 1.2;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: auto;
-  box-sizing: border-box;
-  position: relative;
-  min-height: 100dvh;
-  padding-bottom: calc(1rem + env(safe-area-inset-bottom)); /* 👈 nuovo */
-}
+    min-height: 100dvh; /* aggiunto: forza l'altezza verticale reale */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: clamp(0.75rem, 3vw, 0.95rem);
+    line-height: 1.2;
+  }
 
   /* Testi mobili — partono da metà schermo verso destra */
   .top-text, .bottom-text {
@@ -161,7 +157,15 @@ a:hover {
   }
 
   .bottom-text {
+    position: absolute;
     bottom: calc(1rem + env(safe-area-inset-bottom));
+    left: 50vw;
+    width: 50vw;
+    text-align: left;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   }
 
   .bottom-text p {
