@@ -130,22 +130,20 @@ a:hover {
   }
 
   .right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-grow: 1;
-    min-height: 100dvh;
-    box-sizing: border-box;
     font-size: clamp(0.75rem, 3vw, 0.95rem);
     line-height: 1.2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom)) 50vw;
   }
 
   .top-text {
-    margin-top: 1rem;
-    padding-left: 50vw;
-    padding-right: 1rem;
     text-align: left;
-    overflow-wrap: break-word;
+    box-sizing: border-box;
   }
 
   .top-text .line {
@@ -153,12 +151,8 @@ a:hover {
   }
 
   .bottom-text {
-    margin-top: auto; /* Spinge in basso */
-    padding-left: 50vw;
-    padding-right: 1rem;
-    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
     text-align: left;
-    overflow-wrap: break-word;
+    box-sizing: border-box;
   }
 
   .bottom-text p {
