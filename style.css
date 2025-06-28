@@ -90,7 +90,7 @@ html, body {
 
   .container {
     flex-direction: column;
-    min-height: 100dvh; /* altezza effettiva del viewport */
+    min-height: 100dvh; /* Copre l’intero viewport anche su Safari */
   }
 
   .left {
@@ -112,23 +112,22 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
     position: relative;
+    height: 100%;
     box-sizing: border-box;
   }
 
-  /* TESTI ALLINEATI A SINISTRA MA PARTENDO DA METÀ SCHERMO */
+  /* Blocchi di testo che partono da metà schermo verso destra */
   .top-text,
   .bottom-text {
     position: absolute;
-    left: 50vw;                    /* punto iniziale a metà schermo */
-    transform: translateX(0);      /* NON centrare, serve per evitare eredità */
-    width: calc(50vw - 1rem);      /* lascia 1rem di padding a destra */
-    text-align: left;
+    left: 50%;
+    width: 50vw;
     padding-right: 1rem;
+    text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .top-text {
@@ -140,7 +139,7 @@ html, body {
   }
 
   .bottom-text {
-    bottom: calc(1rem + env(safe-area-inset-bottom));
+    bottom: calc(1rem + env(safe-area-inset-bottom)); /* garantisce visibilità su Safari */
   }
 
   .bottom-text p {
