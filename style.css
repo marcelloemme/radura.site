@@ -142,8 +142,7 @@ a:hover {
   }
 
   /* TESTI MOBILI — partono da metà schermo verso destra */
-  .top-text,
-.bottom-text {
+  .top-text, .bottom-text {
   position: absolute;
   left: 50vw;                  /* parte esattamente da metà schermo */
   width: 50vw;                 /* occupa esattamente la metà destra */
@@ -162,7 +161,10 @@ a:hover {
     margin: 0;
   }
 
-
+.bottom-text {
+    bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+  
 
   .bottom-text p {
     margin: 0;
