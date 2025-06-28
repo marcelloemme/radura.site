@@ -90,7 +90,7 @@ html, body {
 
   .container {
     flex-direction: column;
-    min-height: 100dvh; /* Usa altezza reale del dispositivo */
+    min-height: 100dvh; /* altezza effettiva del viewport */
   }
 
   .left {
@@ -118,12 +118,13 @@ html, body {
     box-sizing: border-box;
   }
 
-  /* Testo alto e basso partono da metà schermo */
+  /* TESTI ALLINEATI A SINISTRA MA PARTENDO DA METÀ SCHERMO */
   .top-text,
   .bottom-text {
     position: absolute;
-    left: 50vw;
-    width: 50vw;
+    left: 50vw;                    /* punto iniziale a metà schermo */
+    transform: translateX(0);      /* NON centrare, serve per evitare eredità */
+    width: calc(50vw - 1rem);      /* lascia 1rem di padding a destra */
     text-align: left;
     padding-right: 1rem;
     box-sizing: border-box;
