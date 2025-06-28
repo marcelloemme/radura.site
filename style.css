@@ -65,6 +65,7 @@ html, body {
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  position: relative;
 }
 
 /* Testo in alto a destra */
@@ -79,7 +80,27 @@ html, body {
 }
 
 /* Testo in basso allineato con immagine */
-/* Mobile styles: attivi su schermi verticali o quadrati */
+.bottom-text {
+  text-align: right;
+  padding-right: 1rem;
+  transform: translateY(0.25em); /* abbassa per compensare le lettere con gambette */
+}
+
+.bottom-text p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* VERSIONE MOBILE — attiva su schermi verticali o quadrati */
 @media (max-aspect-ratio: 1/1) {
   html, body {
     width: 100%;
@@ -90,7 +111,7 @@ html, body {
 
   .container {
     flex-direction: column;
-    min-height: 100dvh; /* Copre l’intero viewport anche su Safari */
+    min-height: 100dvh; /* garantisce che copra il viewport su Safari */
   }
 
   .left {
@@ -112,22 +133,22 @@ html, body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    position: relative;
-    height: 100%;
+    justify-content: flex-start;
+    height: auto;
     box-sizing: border-box;
+    position: relative;
+    min-height: 100dvh;
   }
 
-  /* Blocchi di testo che partono da metà schermo verso destra */
-  .top-text,
-  .bottom-text {
+  /* Testi mobili — partono da metà schermo verso destra */
+  .top-text, .bottom-text {
     position: absolute;
-    left: 50%;
-    width: 50vw;
-    padding-right: 1rem;
+    left: 50vw;              /* inizia da metà schermo */
+    width: 50vw;             /* occupa la metà destra */
     text-align: left;
+    padding-right: 1rem;
     box-sizing: border-box;
     overflow-wrap: break-word;
-    word-break: break-word;
   }
 
   .top-text {
@@ -139,7 +160,7 @@ html, body {
   }
 
   .bottom-text {
-    bottom: calc(1rem + env(safe-area-inset-bottom)); /* garantisce visibilità su Safari */
+    bottom: calc(1rem + env(safe-area-inset-bottom));
   }
 
   .bottom-text p {
