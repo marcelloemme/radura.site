@@ -151,6 +151,7 @@ a:hover {
   padding-right: 1rem;
   box-sizing: border-box;
   overflow-wrap: break-word;   /* va a capo solo tra parole intere */
+  min-height: 100dvh;
 }
 
   .top-text {
@@ -163,7 +164,6 @@ a:hover {
 
   .bottom-text {
     bottom: calc(1rem + env(safe-area-inset-bottom));
-    min-height: 100dvh;
   }
 
   .bottom-text p {
