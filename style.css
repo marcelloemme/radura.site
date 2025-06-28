@@ -162,9 +162,7 @@ a:hover {
     margin: 0;
   }
 
-  .bottom-text {
-    bottom: calc(1rem + env(safe-area-inset-bottom));
-  }
+
 
   .bottom-text p {
     margin: 0;
