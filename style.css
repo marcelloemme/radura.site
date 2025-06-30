@@ -31,7 +31,7 @@ html, body {
   overflow: hidden;
   align-items: flex-start;
 }
-/* Sezioni sinistra e destra: stessa altezza dell'immagine */
+/* Sezioni sinistra e destra: stessa  altezza dell'immagine */
 .left,
 .right {
   height: clamp(50vh, 100vw * 0.6, 80vh);
