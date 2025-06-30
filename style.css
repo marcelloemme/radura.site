@@ -97,7 +97,6 @@ a:hover {
   .container {
     flex-direction: column;
     min-height: 100dvh;
-    position: relative;
   }
   .left {
     width: 100%;
@@ -111,20 +110,20 @@ a:hover {
     display: block;
   }
   .right {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100dvh;
-    z-index: 10;
-    pointer-events: none; /* Permette interazione con immagine sottostante */
+    width: 100%;
+    min-height: calc(100dvh - var(--image-height, 60vh));
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
   }
   
   /* Testi mobili — partono da metà schermo verso destra */
   .top-text, .bottom-text {
-    position: absolute;
-    left: 50vw;
-    width: 50vw;
+    position: relative;
+    left: 50%;
+    width: 50%;
     padding-left: 1rem;
     padding-right: 1rem;
     text-align: left;
@@ -132,11 +131,10 @@ a:hover {
     overflow-wrap: break-word;
     font-size: clamp(0.75rem, 3vw, 0.95rem);
     line-height: 1.2;
-    pointer-events: auto; /* Riabilita interazioni per i link */
   }
   
   .top-text {
-    top: 1rem;
+    align-self: flex-start;
   }
   
   .top-text .line {
@@ -144,7 +142,7 @@ a:hover {
   }
   
   .bottom-text {
-    bottom: calc(1rem + env(safe-area-inset-bottom));
+    align-self: flex-end;
   }
   
   .bottom-text p {
