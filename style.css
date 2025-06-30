@@ -110,8 +110,8 @@ a:hover {
     display: block;
   }
   .right {
-    min-height: 100dvh; /* IMPORTANTE: altezza minima per il posizionamento assoluto */
-    height: 100dvh;     /* AGGIUNTO: altezza fissa per far funzionare position absolute */
+    min-height: 100dvh;
+    height: 100dvh;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -122,10 +122,11 @@ a:hover {
   /* Testi mobili — partono da metà schermo verso destra */
   .top-text, .bottom-text {
     position: absolute;
-    left: 50vw;              /* inizia da metà schermo */
-    width: 50vw;             /* occupa la metà destra */
-    text-align: left;
+    left: 50vw;
+    width: 50vw;
+    padding-left: 1rem;  /* padding a sinistra invece che a destra */
     padding-right: 1rem;
+    text-align: left;    /* allineamento a sinistra */
     box-sizing: border-box;
     overflow-wrap: break-word;
   }
@@ -137,7 +138,6 @@ a:hover {
   }
   .bottom-text {
     bottom: calc(1rem + env(safe-area-inset-bottom));
-    /* Rimuovi le proprietà duplicate che erano già definite sopra */
   }
   .bottom-text p {
     margin: 0;
