@@ -86,7 +86,7 @@ a {
 a:hover {
   text-decoration: underline;
 }
-/* VERSIONE MOBILE — attiva su schermi verticali o quadrati */
+  /* VERSIONE MOBILE — attiva su schermi verticali o quadrati */
 @media (max-aspect-ratio: 1/1) {
   html, body {
     width: 100%;
@@ -97,6 +97,7 @@ a:hover {
   .container {
     flex-direction: column;
     min-height: 100dvh;
+    position: relative;
   }
   .left {
     width: 100%;
@@ -110,35 +111,42 @@ a:hover {
     display: block;
   }
   .right {
-    min-height: 100dvh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100dvh;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: clamp(0.75rem, 3vw, 0.95rem);
-    line-height: 1.2;
+    z-index: 10;
+    pointer-events: none; /* Permette interazione con immagine sottostante */
   }
+  
   /* Testi mobili — partono da metà schermo verso destra */
   .top-text, .bottom-text {
     position: absolute;
     left: 50vw;
     width: 50vw;
-    padding-left: 1rem;  /* padding a sinistra invece che a destra */
+    padding-left: 1rem;
     padding-right: 1rem;
-    text-align: left;    /* allineamento a sinistra */
+    text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
+    font-size: clamp(0.75rem, 3vw, 0.95rem);
+    line-height: 1.2;
+    pointer-events: auto; /* Riabilita interazioni per i link */
   }
+  
   .top-text {
     top: 1rem;
   }
+  
   .top-text .line {
     margin: 0;
   }
+  
   .bottom-text {
     bottom: calc(1rem + env(safe-area-inset-bottom));
   }
+  
   .bottom-text p {
     margin: 0;
     padding: 0;
