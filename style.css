@@ -1,14 +1,12 @@
 * {
   box-sizing: border-box;
 }
-
 @font-face {
   font-family: 'FTAktual';
   src: url('FTAktual-Book.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
 html, body {
   margin: 0;
   padding: 0;
@@ -24,7 +22,6 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
-
 /* Container principale */
 .container {
   display: flex;
@@ -34,13 +31,11 @@ html, body {
   overflow: hidden;
   align-items: flex-start;
 }
-
-/* Sezioni sinistra e destra: stessa altezza dell’immagine */
+/* Sezioni sinistra e destra: stessa altezza dell'immagine */
 .left,
 .right {
   height: clamp(50vh, 100vw * 0.6, 80vh);
 }
-
 /* Sezione sinistra: immagine */
 .left {
   flex: 1;
@@ -48,7 +43,6 @@ html, body {
   align-items: flex-start;
   justify-content: flex-start;
 }
-
 .left img {
   height: 100%;
   width: auto;
@@ -57,7 +51,6 @@ html, body {
   padding: 0;
   object-fit: contain;
 }
-
 /* Sezione destra: testo */
 .right {
   flex: 1;
@@ -67,39 +60,32 @@ html, body {
   box-sizing: border-box;
   position: relative;
 }
-
 /* Testo in alto a destra */
 .top-text {
   text-align: right;
   padding-top: 0.7rem;
   padding-right: 0.75rem;
 }
-
 .top-text .line {
   margin: 0 0 0.5rem 0;
 }
-
 /* Testo in basso allineato con immagine */
 .bottom-text {
   text-align: right;
   padding-right: 1rem;
   transform: translateY(0.25em); /* abbassa per compensare le lettere con gambette */
 }
-
 .bottom-text p {
   margin: 0;
   padding: 0;
 }
-
 a {
   color: black;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
-
 /* VERSIONE MOBILE — attiva su schermi verticali o quadrati */
 @media (max-aspect-ratio: 1/1) {
   html, body {
@@ -108,27 +94,24 @@ a:hover {
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
   }
-
   .container {
     flex-direction: column;
-    min-height: 100dvh; /* aggiorna qui da 100vh a 100dvh */
+    min-height: 100dvh;
   }
-
   .left {
     width: 100%;
     flex: none;
     height: auto;
   }
-
   .left img {
     width: 100vw;
     height: auto;
     object-fit: contain;
     display: block;
   }
-
   .right {
-    min-height: 100dvh; /* aggiunto: forza l'altezza verticale reale */
+    min-height: 100dvh; /* IMPORTANTE: altezza minima per il posizionamento assoluto */
+    height: 100dvh;     /* AGGIUNTO: altezza fissa per far funzionare position absolute */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -136,7 +119,6 @@ a:hover {
     font-size: clamp(0.75rem, 3vw, 0.95rem);
     line-height: 1.2;
   }
-
   /* Testi mobili — partono da metà schermo verso destra */
   .top-text, .bottom-text {
     position: absolute;
@@ -147,27 +129,16 @@ a:hover {
     box-sizing: border-box;
     overflow-wrap: break-word;
   }
-
   .top-text {
     top: 1rem;
   }
-
   .top-text .line {
     margin: 0;
   }
-
   .bottom-text {
-    position: absolute;
     bottom: calc(1rem + env(safe-area-inset-bottom));
-    left: 50vw;
-    width: 50vw;
-    text-align: left;
-    padding-right: 1rem;
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+    /* Rimuovi le proprietà duplicate che erano già definite sopra */
   }
-
   .bottom-text p {
     margin: 0;
     padding: 0;
