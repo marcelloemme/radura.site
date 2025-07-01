@@ -31,7 +31,7 @@ html, body {
   overflow: hidden;
   align-items: flex-start;
 }
-/* Sezioni sinistra e destra: stessa  altezza dell'immagine */
+/* Sezioni sinistra e destra: stessa altezza dell'immagine */
 .left,
 .right {
   height: clamp(50vh, 100vw * 0.6, 80vh);
@@ -113,23 +113,25 @@ a:hover {
     width: 100%;
     flex: 1;
     position: relative;
-    min-height: 40vh; /* Assicura spazio minimo per il testo */
-    display: block; /* Cambiato da flex a block */
+    min-height: 20vh; /* Spazio minimo più generoso per evitare sovrapposizioni */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
   }
   
   /* Testi mobili — partono da metà schermo verso destra */
   .top-text {
-    position: absolute;
-    top: 1rem;
+    position: relative;
     left: 50%;
     width: 50%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 0 1rem 1rem 1rem; /* Padding bottom per separare dai testi sotto */
     text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
     font-size: clamp(0.75rem, 3vw, 0.95rem);
     line-height: 1.2;
+    flex-shrink: 0;
   }
   
   .top-text .line {
@@ -137,17 +139,16 @@ a:hover {
   }
   
   .bottom-text {
-    position: absolute;
-    bottom: calc(1rem + env(safe-area-inset-bottom));
+    position: relative;
     left: 50%;
     width: 50%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem 1rem calc(env(safe-area-inset-bottom)) 1rem; /* Padding top per separare dal testo sopra */
     text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
     font-size: clamp(0.75rem, 3vw, 0.95rem);
     line-height: 1.2;
+    flex-shrink: 0;
   }
   
   .bottom-text p {
