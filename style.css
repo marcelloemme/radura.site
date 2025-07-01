@@ -142,7 +142,7 @@ a:hover {
     position: absolute;
     left: 50%;
     width: 50%;
-    bottom: calc(0dvh + 1rem); /* Posiziona a 2rem dal fondo del viewport dinamico */
+    bottom: calc(0dvh + 0.5rem); /* Posiziona a 2rem dal fondo del viewport dinamico */
     padding: 0;
     text-align: left;
     box-sizing: border-box;
