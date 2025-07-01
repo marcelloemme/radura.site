@@ -113,7 +113,7 @@ a:hover {
     width: 100%;
     flex: 1;
     position: relative;
-    min-height: 25vh; /* Ridotto come hai testato */
+    min-height: 20vh; /* Ridotto come hai testato */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -129,7 +129,7 @@ a:hover {
     text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
-    font-size: clamp(0.75rem, 3vw, 0.95rem);
+    font-size: clamp(0.65rem, 2.5vw, 0.85rem);
     line-height: 1.2;
     flex-shrink: 0;
   }
@@ -146,7 +146,7 @@ a:hover {
     text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
-    font-size: clamp(0.6rem, 2.5vw, 0.8rem); /* Font più piccolo per evitare a capo */
+    font-size: clamp(0.65rem, 2.5vw, 0.85rem); /* Font più piccolo per evitare a capo */
     line-height: 1.2;
     flex-shrink: 0;
     white-space: nowrap; /* Evita a capo */
