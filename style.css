@@ -129,7 +129,7 @@ a:hover {
     text-align: left;
     box-sizing: border-box;
     overflow-wrap: break-word;
-    font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+    font-size: clamp(0.65rem, 2.5vw, 0.85rem); /* AGGIUNTO: stesso font size del bottom-text */
     line-height: 1.2;
     flex-shrink: 0;
   }
